@@ -1,0 +1,157 @@
+<!--index.wxml-->
+<wxs module="filters" src="addmul.wxs"></wxs>
+<view class="view_class">
+  <button id="0" type="{{currentKind === 0 ? 'primary': 'default'}}" bindtap="kindClick">消耗</button>
+  <button id="1" type="{{currentKind === 1 ? 'primary': 'default'}}" bindtap="kindClick">种族</button>
+  <button id="2" type="{{currentKind === 2 ? 'primary': 'default'}}" bindtap="kindClick">职业</button>
+</view>
+<view class ="view_option">
+  <scroll-view class="scroll-wrapper" scroll-x scroll-with-animation="true" scroll-into-view="item{{currentTab < 4 ? 0 : currentTab - 3}}" >
+  <view class="navigate-item" id="{{item}}" wx:for="{{taskList}}" wx:key="{{index}}" data-index="{{index}}" bindtap="handleClick">
+    <view class="names {{currentTab === index ? 'active' : ''}}" >{{item}}</view>
+    <view class="currtline {{currentTab === index ? 'active' : ''}}"></view>
+  </view>
+  </scroll-view>
+</view>
+
+<view class="img-item" id="{{index}}" wx:for="{{imgList}}" wx:key="{{index}}" data-index="{{index}}" 
+bindtap="imgClick">
+  <image style="width: 104rpx; height: 104rpx; background-color: #eeeeee; border: 8rpx solid {{item.color}}" mode="aspectFit" src="{{item.url}}"></image>
+  <view class="imgtext">{{item.name}}</view>
+</view>
+
+
+ <view  wx:if="{{currentKind>0}}" style="background-color: #f9fafc; font-size: 32rpx;" >
+    <view style="height: 20rpx;"></view>
+    <view style="margin: 10rpx 20rpx;" wx:for="{{currentCareerList}}" wx:key="{{index}}">{{item}}</view>
+    <view style="height: 10rpx;"></view>
+    <view style="display: flex; flex-direction: row; margin: 10rpx;" wx:for="{{currentDescList}}" wx:key="{{index}}"> 
+      【{{item.num}}】<view style="color: #898c95;">{{item.desc}}</view> 
+    </view>
+    <view style="height: 20rpx;"></view>
+ </view>
+ 
+ <view style="display: flex; flex-direction: column;" >
+  <view  class="usermotto" style="align-items:center" >
+    <view class="zhenrong-text">阵型
+      <text style="font-size: 30rpx; font-weight: 400; color: gray;">拖拽调整站位，拖出棋盘删除</text>
+    </view>
+    <view class="reset-text" bindtap="resetClick">重置阵容</view>
+  </view>
+
+  
+  <view style="display: inline-block; flex-direction: column; margin: 0rpx 30rpx 0rpx 30rpx;" wx:for="{{[1,2,3,4]}}" wx:key="{{index}}" wx:for-index="index1">
+    <view style="display: inline-block; flex-direction: row; " wx:for="{{[1,2,3,4,5,6,7]}}" wx:key="{{index}}" wx:for-index="index2" id="{{index1*7+index2}}" bindtap="heroClick" >
+
+      <view catchtouchmove="catchTouchMove" style="position: absolute;">
+        <image wx:if="{{index1 == 0 && myPosTb[index1*7+index2].url}}" class="zhenrong-img" style=" transform: translate(0rpx,25rpx); position: absolute; z-index: {{index1*7+index2 == longPressId?1000:100}};  left: {{myPosTb[index1*7+index2].flow_x}}rpx; top: {{myPosTb[index1*7+index2].flow_y}}rpx;" mode="aspectFit" 
+        src="{{myPosTb[index1*7+index2].url}}" id="{{index1*7+index2}}" bindtouchstart="heroTouchStart" bindtouchmove="heroTouchMove" bindtouchend="heroTouchEnd">
+        </image>
+      </view>
+      
+      <view catchtouchmove="catchTouchMove" style="position: absolute;">
+        <image wx:if="{{index1 == 1 && myPosTb[index1*7+index2].url}}" class="zhenrong-img" style=" transform: translate(45rpx,0rpx); position: absolute; z-index: {{index1*7+index2 == longPressId?1000:100}};  left: {{myPosTb[index1*7+index2].flow_x}}rpx; top: {{myPosTb[index1*7+index2].flow_y}}rpx;" mode="aspectFit" 
+        src="{{myPosTb[index1*7+index2].url}}" id="{{index1*7+index2}}" bindtouchstart="heroTouchStart" bindtouchmove="heroTouchMove" bindtouchend="heroTouchEnd">
+        </image>
+      </view>
+
+      <view catchtouchmove="catchTouchMove" style="position: absolute;">
+        <image wx:if="{{index1 == 2 && myPosTb[index1*7+index2].url}}" class="zhenrong-img" style=" transform: translate(0rpx,-25rpx); position: absolute; z-index: {{index1*7+index2 == longPressId?1000:100}};  left: {{myPosTb[index1*7+index2].flow_x}}rpx; top: {{myPosTb[index1*7+index2].flow_y}}rpx;" mode="aspectFit" 
+        src="{{myPosTb[index1*7+index2].url}}" id="{{index1*7+index2}}" bindtouchstart="heroTouchStart" bindtouchmove="heroTouchMove" bindtouchend="heroTouchEnd">
+        </image>
+      </view>
+
+      <view catchtouchmove="catchTouchMove" style="position: absolute;">
+        <image wx:if="{{index1 == 3 && myPosTb[index1*7+index2].url}}" class="zhenrong-img" style=" transform: translate(45rpx,-50rpx); position: absolute; z-index: {{index1*7+index2 == longPressId?1000:100}};  left: {{myPosTb[index1*7+index2].flow_x}}rpx; top: {{myPosTb[index1*7+index2].flow_y}}rpx;  " mode="aspectFit" 
+        src="{{myPosTb[index1*7+index2].url}}" id="{{index1*7+index2}}" bindtouchstart="heroTouchStart" bindtouchmove="heroTouchMove" bindtouchend="heroTouchEnd">
+        </image>
+      </view>
+      
+
+      <image wx:if="{{index1 == 0 }}" class="zhenrong-img" style=" transform: translate(0rpx,25rpx);" mode="aspectFit" 
+      src="https://452453621.oss-cn-beijing.aliyuncs.com/tft/jiahao.png">
+      </image>
+      
+      <image wx:if="{{index1 == 1 }}" class="zhenrong-img" style=" transform: translate(45rpx,0rpx);" mode="aspectFit" 
+      src="https://452453621.oss-cn-beijing.aliyuncs.com/tft/jiahao.png">
+      </image>
+
+      <image wx:if="{{index1 == 2 }}" class="zhenrong-img" style=" transform: translate(0rpx,-25rpx);" mode="aspectFit" 
+      src="https://452453621.oss-cn-beijing.aliyuncs.com/tft/jiahao.png">
+      </image>
+
+      <image wx:if="{{index1 == 3 }}" class="zhenrong-img" style=" transform: translate(45rpx,-50rpx);" mode="aspectFit" 
+      src="https://452453621.oss-cn-beijing.aliyuncs.com/tft/jiahao.png">
+      </image>
+
+      
+    </view>
+  </view>
+</view>
+
+
+
+
+  
+    
+<view>
+  <!-- <view class="img-item"id="{{index}}" wx:for="{{myPosTb}}" wx:key="{{index}}" data-index="{{index}}" bindtap="heroClick">
+    <image style="width: 80rpx; height: 80rpx; background-color: #eeeeee; border: 8rpx solid {{item.color}}" mode="aspectFit" src="{{item.url}}"  data-name="{{item.name}}">
+    </image>
+  </view> -->
+  <page-container show="{{showpage}}" overlay="{{true}}" round="{{true}}" close-on-slideDown="{{true}} "  bind:clickoverlay="clickleave">
+        <view style="display: flex; justify-content: center;margin: 20rpx; font-weight: 600;">英雄信息</view>
+        <view style="margin: 0rpx 30rpx 0rpx 30rpx;">
+          <view style="display: flex; flex-direction: row;align-items: center;">
+            <image style="width: 50px; height: 50px; background-color: #eeeeee; " mode="aspectFit" src="{{myPosTb[clickId].url}}"></image>
+            
+            <view style="display: flex; flex-direction: column;"> 
+              <view style="font-weight: 600;margin: 10rpx;">{{myPosTb[clickId].name}}</view>
+              <view style="display: flex; flex-direction: row;">
+                <view class="career-text" wx:for="{{myPosTb[clickId].kind}}" wx:key="{{index}}">
+                  <image style="width: 40rpx;height: 40rpx; " src="{{NUM[item].icon}}"></image>
+                  {{item}}
+                </view>
+                <view class="career-text" wx:for="{{myPosTb[clickId].career}}" wx:key="{{index}}">
+                  <image style="width: 40rpx;height: 40rpx;" src="{{NUM[item].icon}}"></image>{{item}}
+                </view>
+              </view>
+            </view>
+          </view>
+          <view style="font-size: 35rpx;margin: 40rpx 0rpx 40rpx 0rpx">技能</view>
+          <view style="display: flex; flex-direction: row; align-items: center;">
+            <image  style="width: 90rpx; height: 90rpx; " src="{{myPosTb[clickId].skillIcon}}"></image>
+            <view style="display: flex; flex-direction: column; margin-left: 10rpx;"> 
+              <view style="font-size: 35rpx;">{{myPosTb[clickId].skillName}}</view>
+              <view style="display: flex; flex-direction: row; align-items: center;">
+                <image style="width: 35rpx; height: 35rpx" src="https://cdn.tft.tools/general/mana.png"></image>
+                <view style="font-size: 35rpx;">{{myPosTb[clickId].mp}}</view>
+              </view>
+            </view>
+          </view>
+          <view style="height: 10rpx;"></view>
+          <view style="font-size: 30rpx; margin-bottom: 10rpx;" wx:for="{{heroDescList}}" wx:key="{{index}}">
+            <text style="line-height: 5rpx;">{{item}}</text>
+          </view>
+          <view style="height: 10rpx;"></view>
+        </view>
+        <view style="height: 30rpx;"></view>
+        <view class="button-item">
+          <button style="color: red; font-weight:500;"bindtap="deleteHero">从阵容中删除</button>
+          <button style="font-weight: 500;" bindtap="backMain">返回</button>
+        </view>
+        <view style="height: 100rpx;"></view>
+  </page-container>
+  <view wx:if="{{amount>0}}" class="level-text">所需人口：{{amount}}</view>
+  <view wx:if="{{attrList.length>0}}" class="usermotto">羁绊效果</view>
+  <view class="img-item"id="item{{index}}" wx:for="{{attrList}}" wx:key="{{index}}" data-index="{{index}}" >
+    <view class="attr-text" style="opacity: {{item.hasAchieve?1:0.5}};">
+      <image style="width: 40rpx;height: 40rpx; background-color: black;" src="{{NUM[item.name].icon}}"></image>
+      <text style="font-size: 35rpx;" decode="{{true}}">&ensp;{{item.count}}/{{item.maxcount}}{{item.name}}&ensp;</text>
+    </view>
+  </view>
+  
+  <view style="height: 10rpx;">
+  </view>
+
+ </view>

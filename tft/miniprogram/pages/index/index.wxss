@@ -1,0 +1,160 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.usermotto {
+  display: flex;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  margin-right: 20rpx;
+  font-size: large;
+  font-weight: 800;
+  
+}
+.imgtext {
+  text-align: center; 
+  font-size: small;
+  
+}
+
+.scroll-wrapper {
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  height: 90rpx;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.navigate-item {
+  display: inline-block;
+  text-align: center;
+  height: 90rpx;
+  line-height: 90rpx;
+  margin: 0 16rpx;
+}
+.img-item {
+  display: inline-block;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  margin-bottom: 10rpx;
+}
+.zhenrong-item{
+  display: inline-block;
+  flex-direction: row;
+}
+.zhenrong-item-two {
+  display: inline-block;
+  flex-direction: row;
+  margin-left: 40rpx;
+}
+
+.zhuangbei-item{
+  display: inline-block;
+  flex-direction: row;
+}
+.button-item{
+  display: flex;
+}
+
+.view_class {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.view_option{
+  height: 150rpx;
+}
+
+.names {
+  font-size: 30rpx;
+  color: #3c3c3c;
+}
+
+.names.active {
+  color: #00cc88;
+  font-weight: bold;
+  font-size: 37rpx;
+}
+
+.currtline {
+  margin: -8rpx auto 0 auto;
+  width: 100rpx;
+  height: 8rpx;
+  border-radius: 4rpx;
+}
+
+.currtline.active {
+  background: #47CD88;
+  transition: all .3s;
+}
+
+.attr-text{
+  background: #e8d3c6;
+  display: flex;
+  align-items: center;
+}
+.desc-text{
+  background: #ffffff;
+  margin-bottom: 15rpx;
+  color: rgb(112, 108, 108);
+  margin-left: 10rpx;
+}
+
+.zhenrong-text{
+  margin-right: auto;
+}
+.reset-text{
+  color: #3485bb;
+  font-size: smaller;
+}
+.level-text{
+  text-align: center;
+  font-size: 35rpx;
+  color: #6e6e70;
+}
+.center-box{
+  display: flex;
+  justify-content: center;
+}
+.zhenrong_column{
+  display: inline-block;
+  flex-direction: column;
+}
+
+.zhenrong-img{
+  width: 90rpx; 
+  height: 90rpx; 
+  clip-path: polygon(50% 0%, 93.301270189% 25%, 93.301270189% 75%, 50% 100%, 6.698729811% 75%, 6.698729811% 25%); 
+}
+
+
+.career-text{
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+}
