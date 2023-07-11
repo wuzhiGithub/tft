@@ -111,7 +111,7 @@
 }
 
 .attr-text{
-  background: #e8d3c6;
+  /* background: #e8d3c6; */
   display: flex;
   align-items: center;
 }
@@ -123,7 +123,17 @@
 }
 
 .zhenrong-text{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin-right: auto;
+}
+
+.title-img{
+  width: 10rpx;
+  height: 45rpx;
+  background: purple;
+  margin-right: 10rpx;
 }
 .reset-text{
   color: #3485bb;
@@ -149,6 +159,15 @@
   clip-path: polygon(50% 0%, 93.301270189% 25%, 93.301270189% 75%, 50% 100%, 6.698729811% 75%, 6.698729811% 25%); 
 }
 
+.jiban-img{
+  width: 70rpx; 
+  height: 70rpx; 
+  clip-path: polygon(50% 0%, 93.301270189% 25%, 93.301270189% 75%, 50% 100%, 6.698729811% 75%, 6.698729811% 25%); 
+  display: flex; 
+  background-color: #c79274; 
+  justify-content: center;
+  align-items: center;
+}
 
 .career-text{
   margin-left: 10rpx;

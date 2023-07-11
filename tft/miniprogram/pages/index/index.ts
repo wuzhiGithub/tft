@@ -213,7 +213,20 @@ Page({
       tempAttrList.push(dic)
       
     }
-
+    tempAttrList = tempAttrList.sort((n1,n2)=> {
+      if (n1.hasAchieve == n2.hasAchieve){
+        return n2.count - n1.count
+      }
+      else{
+        if (n1.hasAchieve && !n2.hasAchieve){
+          return -1
+        }
+        else{
+          return 1
+        }
+      }
+      
+    })
     this.setData({
       attrList: tempAttrList,
     })

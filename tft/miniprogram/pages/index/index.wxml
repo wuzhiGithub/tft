@@ -33,8 +33,10 @@ bindtap="imgClick">
  
  <view style="display: flex; flex-direction: column;" >
   <view  class="usermotto" style="align-items:center" >
-    <view class="zhenrong-text">阵型
-      <text style="font-size: 30rpx; font-weight: 400; color: gray;">拖拽调整站位，拖出棋盘删除</text>
+    <view class="zhenrong-text">  
+      <view class="title-img"></view>
+      阵型 
+      <text style="font-size: 30rpx; font-weight: 400; color: gray; margin-left:10rpx;">拖拽调整站位，拖出棋盘删除</text>
     </view>
     <view class="reset-text" bindtap="resetClick">重置阵容</view>
   </view>
@@ -143,11 +145,19 @@ bindtap="imgClick">
         <view style="height: 100rpx;"></view>
   </page-container>
   <view wx:if="{{amount>0}}" class="level-text">所需人口：{{amount}}</view>
-  <view wx:if="{{attrList.length>0}}" class="usermotto">羁绊效果</view>
+  <view wx:if="{{attrList.length>0}}" class="usermotto">
+    <view class="zhenrong-text">
+      <view class="title-img"></view>
+      羁绊效果
+    </view>
+  </view>
   <view class="img-item"id="item{{index}}" wx:for="{{attrList}}" wx:key="{{index}}" data-index="{{index}}" >
     <view class="attr-text" style="opacity: {{item.hasAchieve?1:0.5}};">
-      <image style="width: 40rpx;height: 40rpx; background-color: black;" src="{{NUM[item.name].icon}}"></image>
-      <text style="font-size: 35rpx;" decode="{{true}}">&ensp;{{item.count}}/{{item.maxcount}}{{item.name}}&ensp;</text>
+      <view class="jiban-img">
+        <image style="width: 60%; height: 60%; " src="{{NUM[item.name].icon}}"></image>
+      </view>
+      <text style="font-size: 30rpx; background-color: #e8d3c6; margin-left: -10rpx;" decode="{{true}}">&ensp;{{item.count}}/{{item.maxcount}}{{item.name}}&ensp;</text>
+      
     </view>
   </view>
   
